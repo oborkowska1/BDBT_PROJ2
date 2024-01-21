@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+
+<div>
+    <div class="form-title" th:if="${club.clubId==null}">Create new club</div>
+    <div class="form-title" th:unless="${club.clubId==null}">Edit club</div>
+    <form th:action="@{'/clubs/save'}" th:object="${club}" method="post"  id="clubForm">
+        <input type="hidden" th:field="*{clubId}" th:value="${club.clubId}">
+        <div>
+            <div>
+                <label>Nazwa:</label>
+                <input type="text" th:field="*{name}" required maxlength="30"/>
+            </div>
+            <div>
+                <label>Data założenia:</label>
+                <input type="date" th:field="*{creationDate}" required maxlength="30"/>
+            </div>
+            <div>
+                <label>Numer telefonu:</label>
+                <input type="tel" th:field="*{phoneNumber}"  required/>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="email" th:field="*{email}"  required/>
+            </div>
+            <div>
+                <label>Numer konta bankowego:</label>
+                <input type="number" th:field="*{bankAccountNumber}"  required maxlength="26"/>
+            </div>
+            <div>
+                <label>
+                    <select th:field="*{address}" class="form-control" required>
+                        <option th:each="address : ${addresses}" th:value="${address.addressId}"
+                                th:text="${address.toString()}"></option>
+                    </select>
+                </label>
+            </div>
+            <button type="submit" class="button">
+                <i class="fas fa-save"></i> Save
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

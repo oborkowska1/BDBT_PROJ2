@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Main
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 mt-5">
+            <form method="post" th:action="@{/index}">
+                <div class="form-group">
+                    <label style="font-size:30px" th:inline="text">Welcome <a
+                            style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
+                        to the main page!</label>
+                    <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
+                </div>
+
+                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <a th:href="@{'/clubs/new'}" class="btn btn-success"><i
+            class="fa fa-plus"></i> Add new Clubs</a>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr> <!-- Table row -->
+        <th>ID_klubu</th>
+        <!–- Table column -->
+        <th>Nazwa</th>
+        <th>Data zalozenia</th>
+        <th>Numer telefonu</th>
+        <th>Email</th>
+        <th>Rachunek</th>
+        <th>Adres</th>
+        <th>Akcja</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="club : ${clubs}">
+        <td th:text="${club.clubId}">ID</td>
+        <td th:text="${club.name}">ID</td>
+        <td th:text="${club.creationDate}">ID</td>
+        <td th:text="${club.phoneNumber}">ID</td>
+        <td th:text="${club.email}">ID</td>
+        <td th:text="${club.bankAccountNumber}">ID</td>
+        <td th:text="${club.address}">ID</td>
+
+        <td class="col-actions">
+
+
+            <a th:href="@{'/clubs/delete/'+${club.clubId}}"
+               onclick="return confirm('Are you sure you want to delete operator? This will delete all linked tables');"
+               class="btn btn-danger"></i> Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
