@@ -37,7 +37,7 @@
 			<artifactId>ojdbc11</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>C:/Users/witol/Desktop/sem3/bdbt/bdbtprojnr2/ojdbc11.jar</systemPath>
+			<systemPath>C:/Users/spiec/OneDrive/Pulpit/bdbtproj2/BDBT_PROJ2/ojdbc11.jar</systemPath>
 		</dependency>
 
 		<dependency>

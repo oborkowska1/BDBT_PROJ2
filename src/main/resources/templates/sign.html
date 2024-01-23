@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Klub Wysokogórski</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Zaloguj się</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Zarejestruj się</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="form-title" th:if="${club.clubId==null}">Create new club</div>
+        <div class="form-title" th:unless="${club.clubId==null}">Edit club</div>
+        <form th:action="@{'/clubs/save'}" th:object="${club}" method="post"  id="clubForm">
+            <input type="hidden" th:field="*{clubId}" th:value="${club.clubId}">
+            <div>
+                <div>
+                    <label>Imie:</label>
+                    <input type="text" th:field="*{name}" required maxlength="15"/>
+                </div>
+                <div>
+                    <label>Drugie_imie:</label>
+                    <input type="text" th:field="*{secondname}" required maxlength="15"/>
+                </div>
+                <div>
+                    <label>Nazwisko:</label>
+                    <input type="text" th:field="*{lastname}" required maxlength="30"/>
+                </div>
+                <div>
+                    <label>Data urodzenia:</label>
+                    <input type="date" th:field="*{telephone}" required maxlength="30"/>
+                </div>
+                <div>
+                    <label>Płeć:</label>
+                    <select name="plec" th:field="*{sex}">
+                        <option value="K">Kobieta</option>
+                        <option value="M">Mężczyzna</option>
+                    </select>
+                    <input type="text"  required maxlength="1"/>
+                </div>
+                <div>
+                    <label>PESEL:</label>
+                    <input type="number" th:field="*{pesel}"  required maxlength="11"/>
+                </div>
+                <div>
+                <label>Email:</label>
+                <input type="email" th:field="*{email}"  required/>
+                </div>
+                <div>
+                    <label>Numer telefonu:</label>
+                    <input type="tel" th:field="*{phoneNumber}"  required/>
+                </div>
+                <div>
+                    <label>Data zapisu:</label>
+                    <input type="date" th:field="*{dateofsign}" required maxlength="30"/>
+                </div>
+                <select name="przeds" th:field="*{agent}">
+                    <option value="T">Tak</option>
+                    <option value="N">Nie</option>
+                </select>
+
+                <div>
+                    <label>
+                        <select th:field="*{address}" class="form-control" required>
+                            <option th:each="address : ${addresses}" th:value="${address.addressId}"
+                                    th:text="${address.toString()}"></option>
+                        </select>
+                    </label>
+                </div>
+                <button type="submit" class="button">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

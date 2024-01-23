@@ -19,10 +19,10 @@ public class PostOffice {
     @Column(name = "Kod_pocztowy")
     private String postCode;
     @Column(name = "Poczta")
-    private String post;
+    private String placepostoffice;
 
-//    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-//    private List<Address> addresses;
+  //@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+   //sprivate List<Address> addresses;
 
 
 }
