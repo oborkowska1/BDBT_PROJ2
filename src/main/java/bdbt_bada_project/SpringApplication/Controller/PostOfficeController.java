@@ -14,11 +14,11 @@ import java.util.List;
 @Controller
 public class PostOfficeController {
     @Autowired
-    private PostOfficeRepository PostOfficeRepository;
+    private PostOfficeRepository postOfficeRepository;
 
     @GetMapping("/postoffice")
     public String listpostoffice(Model model){
-        List<PostOffice> postoffice = PostOfficeRepository.findAll();
+        List<PostOffice> postoffice = postOfficeRepository.findAll();
         model.addAttribute("postoffice",postoffice);
 
         return "postoffice";
@@ -31,13 +31,13 @@ public class PostOfficeController {
     }
    @GetMapping("/postoffice/delete/{id}")
     public String deletePostoffice(Model model, @PathVariable("id") Long id){
-        PostOfficeRepository.deleteById(id);
+        postOfficeRepository.deleteById(id);
 
         return "redirect:/postoffice";
     }
     @PostMapping("/postoffice/save")
     public String savepostoffice(PostOffice postOffice){
-        PostOfficeRepository.save(postOffice);
+        postOfficeRepository.save(postOffice);
 
         return "redirect:/postoffice";
     }

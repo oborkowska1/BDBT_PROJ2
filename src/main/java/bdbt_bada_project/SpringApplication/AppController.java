@@ -15,11 +15,11 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/main").setViewName("main");
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/sign").setViewName("sign");
 
         registry.addViewController("/main_admin").setViewName("admin/main_admin");
         registry.addViewController("/main_user").setViewName("user/main_user");
         registry.addViewController("/postoffice").setViewName("postoffice");
+        registry.addViewController("/clubs").setViewName("clubs");
     }
 
     @Controller

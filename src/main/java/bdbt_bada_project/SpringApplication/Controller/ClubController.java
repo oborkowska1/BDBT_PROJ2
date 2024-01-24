@@ -30,7 +30,7 @@ public class ClubController {
     public String newClub(Model model){
         model.addAttribute("club",new Club());
         List<Address> addresses = addressRepository.findAll();
-        model.addAttribute("adresses",addresses);
+        model.addAttribute("addresses",addresses);
 
         return "new_club";
     }
