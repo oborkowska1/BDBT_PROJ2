@@ -21,8 +21,9 @@ public class PostOffice {
     @Column(name = "Poczta")
     private String placepostoffice;
 
-  //@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-   //sprivate List<Address> addresses;
+
+  @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+   private List<Address> addresses;
 
 
 }

@@ -41,38 +41,35 @@
     </div>
 </nav>
 
-<!--
 
 <table class="table table-bordered p-1">
     <thead class="thead-dark">
     <tr> <!-- Table row -->
-        <th>ID_klubu</th>
+        <th>ID_adresu</th>
         <!–- Table column -->
-        <th>Nazwa</th>
-        <th>Data zalozenia</th>
-        <th>Numer telefonu</th>
-        <th>Email</th>
-        <th>Rachunek</th>
-        <th>Adres</th>
-        <th>Akcja</th>
+        <th>Kraj</th>
+        <th>Miasto</th>
+        <th>Ulica</th>
+        <th>Nr_budynku</th>
+        <th>ID_poczty</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="club : ${clubs}">
-        <td th:text="${club.clubId}">ID</td>
-        <td th:text="${club.name}">ID</td>
-        <td th:text="${club.creationDate}">ID</td>
-        <td th:text="${club.phoneNumber}">ID</td>
-        <td th:text="${club.email}">ID</td>
-        <td th:text="${club.bankAccountNumber}">ID</td>
-        <td th:text="${club.address}">ID</td>
+    <tr th:each="address : ${address}">
+        <td th:text="${address.addressId}">ID</td>
+        <td th:text="${address.country}">ID</td>
+        <td th:text="${address.city}">ID</td>
+        <td th:text="${address.street}">ID</td>
+        <td th:text="${address.buildingNumber}">ID</td>
+        <td th:text="${address.postoffice}">ID</td>
         <td class="col-actions">
 
             <div>
-                <a th:href="@{'/clubs/new'}" class="btn btn-success"><i
+                <a th:href="@{'/address/new'}" class="btn btn-success"><i
                         class="fa fa-plus"></i> Dodaj klub</a>
             </div>
-            <a th:href="@{'/clubs/delete/'+${club.clubId}}"
+            <a th:href="@{'/address/delete/'+${address.addresId}}"
                onclick="return confirm('Are you sure you want to delete operator? This will delete all linked tables');"
                class="btn btn-danger"></i> Usuń</a>
         </td>
@@ -80,7 +77,6 @@
     </tbody>
 </table>
 
--->
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

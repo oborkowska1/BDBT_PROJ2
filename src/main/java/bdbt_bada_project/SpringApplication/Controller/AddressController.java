@@ -2,6 +2,7 @@ package bdbt_bada_project.SpringApplication.Controller;
 
 import bdbt_bada_project.SpringApplication.Entity.Address;
 import bdbt_bada_project.SpringApplication.Entity.Club;
+import bdbt_bada_project.SpringApplication.Entity.PostOffice;
 import bdbt_bada_project.SpringApplication.Repository.AdressRepository;
 import bdbt_bada_project.SpringApplication.Repository.ClubRepository;
 import bdbt_bada_project.SpringApplication.Repository.PostOfficeRepository;
@@ -16,39 +17,36 @@ import java.util.List;
 
 @Controller
 public class AddressController {
-  /*   @Autowired
-    private ClubRepository clubRepository;
     @Autowired
     private AdressRepository addressRepository;
     @Autowired
     private PostOfficeRepository postofficeRepository;
-   @GetMapping("/clubs")
-    public String listClubs(Model model){
-        List<Club> clubs = clubRepository.findAll();
-        model.addAttribute("clubs",clubs);
-
-        return "clubs";
-    }
-    @GetMapping("/clubs/new")
-    public String newClub(Model model){
-        model.addAttribute("club",new Club());
+   @GetMapping("/address")
+    public String listAddress(Model model){
         List<Address> addresses = addressRepository.findAll();
-        model.addAttribute("adresses",addresses);
+        model.addAttribute("addresses",addresses);
 
-        return "new_club";
+        return "addresses";
     }
-    @GetMapping("/clubs/delete/{id}")
-    public String deleteClub(Model model, @PathVariable("id") Long id){
-        clubRepository.deleteById(id);
+    @GetMapping("/address/new")
+    public String newAddress(Model model){
+        model.addAttribute("address",new Address());
+        List<PostOffice> postOffices = postofficeRepository.findAll();
+        model.addAttribute("postOffices",postOffices);
 
-        return "redirect:/clubs";
+        return "new_address";
     }
-    @PostMapping("/clubs/save")
-    public String saveClub(Club club){
-        clubRepository.save(club);
+    @GetMapping("/address/delete/{id}")
+    public String deleteAddress(Model model, @PathVariable("id") Long id){
+        addressRepository.deleteById(id);
 
-        return "redirect:/clubs";
+        return "redirect:/address";
     }
-*/
+    @PostMapping("/address/save")
+    public String saveaddress(Address address){
+       addressRepository.save(address);
+
+        return "redirect:/address";
+    }
 }
 

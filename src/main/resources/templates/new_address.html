@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8"/>
+    <title>Postoffice Page</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div>
+        <div class="form-title" th:if="${address.addressId==null}">Stwórz nowy adres</div>
+        <div class="form-title" th:unless="${address.addressId==null}">Edytuj adres</div>
+        <form th:action="@{'/address/save'}" th:object="${address}" method="post"  id="postofficeForm">
+          <input type="hidden" th:field="*{addressId}" th:value="${address.addressId}">
+          <div>
+            <div>
+              <label>Kraj:</label>
+              <input type="text" th:field="*{country" required maxlength="6"/>
+            </div>
+              <div>
+                <label>Miasto:</label>
+                <input type="text" th:field="*{city}" required maxlength="17"/>
+              </div>
+            <div>
+              <label>Ulica:</label>
+              <input type="text" th:field="*{street}" required maxlength="17"/>
+            </div>
+            <div>
+              <label>Nr_budynku:</label>
+              <input type="text" th:field="*{buildingNumber}" required maxlength="17"/>
+            </div>
+
+              <button type="submit" class="button">
+                <i class="fas fa-save"></i> Save
+              </button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -20,6 +20,8 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/main_user").setViewName("user/main_user");
         registry.addViewController("/postoffice").setViewName("postoffice");
         registry.addViewController("/clubs").setViewName("clubs");
+        registry.addViewController("/address").setViewName("address");
+
     }
 
     @Controller
