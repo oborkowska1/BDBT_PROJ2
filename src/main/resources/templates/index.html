@@ -5,13 +5,21 @@
   <title>Welcome Page</title>
 
   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+    <style>
+    body {
+    background-image: url("img/gory2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 1600px 600px;
+    }
+    </style>
 </head>
 
-<body class="tlo">
+<body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg navbar-light text-black bg-light static-top">
   <div class="container">
     <a class="navbar-brand" href="/">Klub Wysokogórski</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -22,11 +30,11 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item">
+        <li class="nav-item text-black">
           <a class="nav-link" th:href="@{/index}">Strona główna</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item text-black">
           <a class="nav-link" th:href="@{/main}">Zaloguj się</a>
         </li>
       </ul>
@@ -34,37 +42,20 @@
   </div>
 </nav>
 
-<div class="container text-center mt-2 mb-2 border-bottom">
-    <div class="row mb-2 border-bottom">
-
-        <div class="col-5 text-primary-emphasis bg-primary-subtle align-self-center ">
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                    <h1 class="card-title">Poznaj nas!</h1>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">
-                        <button type="button" href="@{/index}" class=" mt-5 btn btn-bg-dark btn-lg">Zostań członkiem</button>
+<div class="container text-center mt-5 mb-2 ">
+    <div class="row mb-7">
+        <div class="col text-primary-emphasis bg-primary-subtle align-self-center ">
+                    <h1 >Poznaj nas!</h1>
+                    <h6>
+                        <a class="nav-link" th:href="@{/main}">
+                            <button type="button bg dark" class=" mt-5 btn btn-bg-dark btn-lg">Zostań członkiem
+                            </button>
+                        </a>
                     </h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/gory1.jpg" class="d-block w-100" alt="gory1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/gory3.jpg" class="d-block w-100" alt="gory1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/gory2.jpg" class="d-block w-100" alt="gor2">
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-<nav class="bg-dark fixed-bottom text-light bg-body-tertiary">
+<nav class="bg-body-secondary fixed-bottom text-black bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
         <div class="row">
@@ -75,8 +66,8 @@
 
             </div>
             <div class="col">
-                Adres:
-                01-000 Warszawa
+                <p>Adres: 01-000 Warszawa </p>
+
             </div>
         </div>
     </div>

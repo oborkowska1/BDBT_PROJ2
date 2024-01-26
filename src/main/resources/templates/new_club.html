@@ -2,10 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>nowy club Page</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-
+    <title>Nowy klub</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -30,27 +28,29 @@
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
                 <li class="nav-item active">
-                    <button class="btn " type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj się
-                    </button>
+                    <form method="post" th:action="@{/index}">
+                        <button class="btn " type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj się
+                        </button>
+                    </form>
+
                 </li>
 
             </ul>
         </div>
     </div>
 </nav>
-<!<div class="container text-center mt-2">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <div class="form-title" th:if="${club.clubId==null}">Wartpsci</div>
-            <div class="form-title" th:unless="${club.clubId==null}">Edit club</div>
-            <form th:action="@{'/clubs/save'}"  th:object="${club}" method="post"  id="clubForm">
-                <input th:field="*{clubId}" th:value="${club.clubId}">
 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="form-title" th:if="${club.clubId==null}">Wartości</div>
+            <div class="form-title" th:unless="${club.clubId==null}">Edytuj klub</div>
+            <form th:action="@{'/clubs/save'}" th:object="${club}" method="post" id="clubForm">
+                <input th:field="*{clubId}" th:value="${club.clubId}">
                 <div>
                     <div>
                         <label>Nazwa:</label>
-                        <input  type="text" th:field="${club.name}" required maxlength="30"/>
+                        <input type="text" th:field="${club.name}" required maxlength="30"/>
                     </div>
                     <div>
                         <label>Data założenia:</label>
@@ -58,22 +58,22 @@
                     </div>
                     <div>
                         <label>Numer telefonu:</label>
-                        <input type="tel" th:field="*{phoneNumber}"  required/>
+                        <input type="tel" th:field="*{phoneNumber}" maxlength="9" minlength="9" required/>
                     </div>
                     <div>
                         <label>Email:</label>
-                        <input type="email" th:field="*{email}"  required/>
+                        <input type="email" th:field="*{email}" required/>
                     </div>
                     <div>
                         <label>Numer konta bankowego:</label>
-                        <input type="number" th:field="*{bankAccountNumber}"  required maxlength="26"/>
+                        <input type="number" th:field="*{bankAccountNumber}" required minlength="26" maxlength="26"/>
                     </div>
                     <div>
                         <label>
                             <select th:field="*{address}" class="form-control" required>
-                                <option th:each="address : ${addresses}"
-                                        th:value="${address.addressId}"
-                                        th:text="${address.toString()}"></option>
+                                <option th:each="a : ${addresses}"
+                                        th:value="${a.addressId}"
+                                        th:text="${a.toString()}"></option>
                             </select>
                         </label>
                     </div>
@@ -85,7 +85,6 @@
         </div>
         <div class="col"></div>
     </div>
-</div>-
-
+</div>
 </body>
 </html>

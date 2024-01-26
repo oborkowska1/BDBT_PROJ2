@@ -32,8 +32,11 @@
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
                 <li class="nav-item active">
-                    <button class="btn " type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj się
-                    </button>
+                    <form method="post" th:action="@{/index}">
+                        <button class="btn " type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj się
+                        </button>
+                    </form>
+
                 </li>
 
             </ul>
@@ -43,7 +46,7 @@
 
 
 
-        <table class="table table-bordered p-1">
+        <table class="table table-bordered mt-5 p-1">
         <thead class="thead-dark">
         <tr> <!-- Table row -->
             <th>ID_klubu</th>

@@ -42,7 +42,7 @@
 </nav>
 
 
-<table class="table table-bordered p-1">
+<table class="table table-bordered mt-5 p-1">
     <thead class="thead-dark">
     <tr> <!-- Table row -->
         <th>ID_adresu</th>
@@ -52,6 +52,7 @@
         <th>Ulica</th>
         <th>Nr_budynku</th>
         <th>ID_poczty</th>
+        <th>Akcjd</th>
 
     </tr>
     </thead>
@@ -62,14 +63,14 @@
         <td th:text="${address.city}">ID</td>
         <td th:text="${address.street}">ID</td>
         <td th:text="${address.buildingNumber}">ID</td>
-        <td th:text="${address.postoffice}">ID</td>
+        <td th:text="${address.post.placepostoffice}">ID</td>
         <td class="col-actions">
 
             <div>
                 <a th:href="@{'/address/new'}" class="btn btn-success"><i
                         class="fa fa-plus"></i> Dodaj klub</a>
             </div>
-            <a th:href="@{'/address/delete/'+${address.addresId}}"
+            <a th:href="@{'/address/delete/'+${address.addressId}}"
                onclick="return confirm('Are you sure you want to delete operator? This will delete all linked tables');"
                class="btn btn-danger"></i> Usuń</a>
         </td>

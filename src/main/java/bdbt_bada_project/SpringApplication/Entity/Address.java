@@ -29,10 +29,9 @@ public class Address {
     @JoinColumn(name = "ID_poczty")
     private PostOffice post;
 
-
     @Override
     public String toString() {
-        return country + city + street;
+        return country + " " + city + " " + street;
     }
 }
 

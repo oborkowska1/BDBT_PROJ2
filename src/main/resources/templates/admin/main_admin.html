@@ -47,7 +47,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-10 mt-5">
+    <div class="col-md mt-5">
       <form method="post" th:action="@{/index}">
         <div class="form-group">
           <label style="font-size:30px" th:inline="text">Witaj <a
@@ -56,12 +56,14 @@
           </label>
         </div>
       </form>
-      <a class="nav-link" href="/clubs"><button class="btn btn-primary" type="button"  value="Dane">Zobacz kluby
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <a class="nav-link" href="/clubs"><button class="btn btn-dark btn-lg" type="button"  value="Dane">Zobacz kluby
         </button></a>
-      <a class="nav-link" href="/address"><button class="btn btn-primary" type="button"  value="Dane">Zobacz adresy
+      <a class="nav-link" href="/address"><button class="btn btn-dark btn-lg" type="button"  value="Dane">Zobacz adresy
       </button></a>
-      <a class="nav-link" href="/postoffice"><button class="btn btn-primary" type="button"  value="Dane">Zobacz poczte
+      <a class="nav-link" href="/postoffice"><button class="btn btn-dark btn-lg" type="button"  value="Dane">Zobacz poczte
       </button></a>
+      </div>
     </div>
 
   </div>

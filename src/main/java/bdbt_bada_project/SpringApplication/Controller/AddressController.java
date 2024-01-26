@@ -21,12 +21,12 @@ public class AddressController {
     private AdressRepository addressRepository;
     @Autowired
     private PostOfficeRepository postofficeRepository;
-   @GetMapping("/address")
+     @GetMapping("/address")
     public String listAddress(Model model){
-        List<Address> addresses = addressRepository.findAll();
-        model.addAttribute("addresses",addresses);
+       List<Address> address = addressRepository.findAll();
+       model.addAttribute("address",address);
 
-        return "addresses";
+        return "address";
     }
     @GetMapping("/address/new")
     public String newAddress(Model model){
@@ -43,7 +43,7 @@ public class AddressController {
         return "redirect:/address";
     }
     @PostMapping("/address/save")
-    public String saveaddress(Address address){
+    public String saveAddress(Address address){
        addressRepository.save(address);
 
         return "redirect:/address";

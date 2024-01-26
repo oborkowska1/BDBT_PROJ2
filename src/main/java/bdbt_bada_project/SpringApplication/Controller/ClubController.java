@@ -17,34 +17,36 @@ import java.util.List;
 public class ClubController {
     @Autowired
     private ClubRepository clubRepository;
+
     @Autowired
     private AdressRepository addressRepository;
-    @GetMapping("/clubs")
-    public String listClubs(Model model){
-        List<Club> clubs = clubRepository.findAll();
-        model.addAttribute("clubs",clubs);
 
+    @GetMapping("/clubs")
+    public String listClubs(Model model) {
+        List<Club> clubs = clubRepository.findAll();
+        model.addAttribute("clubs", clubs);
         return "clubs";
     }
-    @GetMapping("/clubs/new")
-    public String newClub(Model model){
-        model.addAttribute("club",new Club());
-        List<Address> addresses = addressRepository.findAll();
-        model.addAttribute("addresses",addresses);
 
+    @GetMapping("/clubs/new")
+    public String newClub(Model model) {
+        model.addAttribute("club", new Club());
+        List<Address> addresses = addressRepository.findAll();
+        model.addAttribute("addresses", addresses);
         return "new_club";
     }
+
     @GetMapping("/clubs/delete/{id}")
-    public String deleteClub(Model model, @PathVariable("id") Long id){
+    public String deleteClub(Model model, @PathVariable("id") Long id) {
         clubRepository.deleteById(id);
-
         return "redirect:/clubs";
     }
-    @PostMapping("/clubs/save")
-    public String saveClub(Club club){
+
+    @PostMapping("/clubs/new")
+    public String saveClub(Club club) {
+        Address selectedAddress = addressRepository.findById(club.getAddress().getAddressId()).orElse(null);
+        club.setAddress(selectedAddress);
         clubRepository.save(club);
-
         return "redirect:/clubs";
     }
-
 }

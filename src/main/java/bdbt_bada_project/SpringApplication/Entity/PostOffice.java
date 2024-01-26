@@ -20,10 +20,12 @@ public class PostOffice {
     private String postCode;
     @Column(name = "Poczta")
     private String placepostoffice;
+    @Override
+    public String toString() {
+        return postId + " ";
+    }
 
 
   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
    private List<Address> addresses;
-
-
 }

@@ -45,21 +45,39 @@
 
 <div class="container">
   <div class="row">
-
     <div class="col-md-10 mt-5">
       <form method="post" th:action="@{/index}">
         <div class="form-group">
-          <label style="font-size:30px" th:inline="text">Welcome <a
-                  style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-            to the main page!</label>
-          <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
+          <label style="font-size:30px" th:inline="text">Witaj <a
+                  tyle="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]
+          </b></a> na głównej stronie!
+          </label>
         </div>
-
-        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
-        </button>
       </form>
+      </div>
     </div>
 
+    <h1>Tabela Poczty</h1>
+      <table class="table table-bordered mt-5"  >
+        <thead class="thead-light">
+        <tr> <!-- Table row -->
+          <th>ID_Poczty</th>
+          <!–- Table column -->
+          <th>Kod_Pocztowy</th>
+          <th>Poczta</th>
+          <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="postoffice : ${postoffice}">
+          <td th:text="${postoffice.postId}">ID</td>
+          <td th:text="${postoffice.postCode}">ID</td>
+          <td th:text="${postoffice.placepostoffice}">ID</td>
+
+        </tr>
+        </tbody>
+      </table>
+  </div>
   </div>
 </div>
 

@@ -17,30 +17,41 @@ public class PostOfficeController {
     private PostOfficeRepository postOfficeRepository;
 
     @GetMapping("/postoffice")
-    public String listpostoffice(Model model){
+    public String listpostoffice(Model model) {
         List<PostOffice> postoffice = postOfficeRepository.findAll();
-        model.addAttribute("postoffice",postoffice);
+        model.addAttribute("postoffice", postoffice);
 
         return "postoffice";
     }
+
     @GetMapping("/postoffice/new")
-    public String newPostoffice(Model model){
-        model.addAttribute("PostOffice",new PostOffice());
+    public String newPostoffice(Model model) {
+        model.addAttribute("PostOffice", new PostOffice());
 
         return "new_postoffice";
     }
-   @GetMapping("/postoffice/delete/{id}")
-    public String deletePostoffice(Model model, @PathVariable("id") Long id){
+
+    @GetMapping("/postoffice/delete/{id}")
+    public String deletePostoffice(Model model, @PathVariable("id") Long id) {
         postOfficeRepository.deleteById(id);
 
         return "redirect:/postoffice";
     }
+
     @PostMapping("/postoffice/save")
-    public String savepostoffice(PostOffice postOffice){
+    public String savepostoffice(PostOffice postOffice) {
         postOfficeRepository.save(postOffice);
 
         return "redirect:/postoffice";
     }
 
+    @GetMapping("/main_user")
+    public String listmain_user(Model model) {
+        List<PostOffice> postoffice2 = postOfficeRepository.findAll();
+        model.addAttribute("postoffice", postoffice2);
+
+        return "postoffice";
+
+    }
 }
 
